@@ -1,0 +1,150 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+}
+
+@layer components {
+  .pixel-perfect {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+
+  .character {
+    @apply transition-transform duration-150 ease-in-out;
+  }
+
+  .character-container {
+    @apply relative flex items-center justify-center;
+  }
+
+  .character-shadow {
+    @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-2 bg-black/20 rounded-full filter blur-sm;
+  }
+
+  .name-tag {
+    @apply absolute -top-6 left-1/2 -translate-x-1/2 bg-white/90 text-xs px-2 py-0.5 rounded whitespace-nowrap font-medium backdrop-blur-sm shadow-sm border border-gray-200;
+  }
+
+  .room {
+    @apply relative rounded-lg shadow-md overflow-hidden transition-all duration-300;
+  }
+
+  .interactive-object {
+    @apply absolute cursor-pointer transition-all duration-300 hover:scale-105;
+  }
+
+  .room-label {
+    @apply absolute top-2 left-2 bg-white/90 text-xs px-2 py-1 rounded font-medium backdrop-blur-sm shadow-sm border border-gray-200;
+  }
+
+  .avatar-item {
+    @apply w-10 h-10 rounded-full flex items-center justify-center text-white font-bold cursor-pointer transition-all duration-200 hover:scale-110;
+  }
+
+  .map-container {
+    @apply relative overflow-hidden;
+    transform-origin: center;
+  }
+
+  .minimap {
+    @apply fixed bottom-4 right-4 bg-white/90 rounded-lg shadow-lg border border-gray-200 p-2 z-50 backdrop-blur-sm;
+  }
+
+  .chat-bubble {
+    @apply absolute -top-16 left-1/2 -translate-x-1/2 bg-white/90 p-2 rounded-lg text-sm max-w-[150px] whitespace-normal break-words shadow-md backdrop-blur-sm animate-pop-in;
+  }
+
+  .proximity-indicator {
+    @apply absolute w-32 h-32 rounded-full bg-blue-500/10 animate-pulse-subtle;
+  }
+}
